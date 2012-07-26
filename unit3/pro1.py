@@ -1,5 +1,12 @@
 '''
 RPN Calculator
+
+Enhance the functionality of the RPN calculator given in Program  in the following ways:
+Use double-precision, floating-point arithmetic.
+Provide the complete repertoire of basic operators: +, -,  , and  .
+Add an exponentiation operator and a unary negation operator.
+Add a clear method that empties the operand stack and a print method that 
+prints out the contents of the operand stack.
 '''
 
 from opus7.stackAsLinkedList import StackAsLinkedList
