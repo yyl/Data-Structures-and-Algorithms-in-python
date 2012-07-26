@@ -6,46 +6,60 @@ from opus7.stackAsLinkedList import StackAsLinkedList
 
 class Algorithms(object):
 
-  @staticmethod
-  def calculator(input, output):
-    stack = StackAsLinkedList()
+  def __init__(self):
+    self.stack = StackAsLinkedList()
+
+  def calculator(self, input, output):
     for line in input.readlines():
       for word in line.split():
         if word == "+":
           print "it is +"
-          arg2 = stack.pop()
-          arg1 = stack.pop()
-          stack.push(arg1 + arg2)
+          arg2 = self.stack.pop()
+          arg1 = self.stack.pop()
+          self.stack.push(arg1 + arg2)
         elif word == "*":
           print "it is *"
-          arg2 = stack.pop()
-          arg1 = stack.pop()
-          stack.push(arg1 * arg2)
+          arg2 = self.stack.pop()
+          arg1 = self.stack.pop()
+          self.stack.push(arg1 * arg2)
         elif word == "-":
           print "it is -"
-          arg2 = stack.pop()
-          arg1 = stack.pop()
-          stack.push(arg1 - arg2)
+          arg2 = self.stack.pop()
+          arg1 = self.stack.pop()
+          self.stack.push(arg1 - arg2)
         elif word == "/":
           print "it is /"
-          arg2 = stack.pop()
-          arg1 = stack.pop()
-          stack.push(arg1 / arg2)
+          arg2 = self.stack.pop()
+          arg1 = self.stack.pop()
+          self.stack.push(arg1 / arg2)
         # exponential expression
         elif word == "^":
           print "it is ^"
-          arg2 = stack.pop()
-          arg1 = stack.pop()
-          stack.push(arg1 ** arg2)
+          arg2 = self.stack.pop()
+          arg1 = self.stack.pop()
+          self.stack.push(arg1 ** arg2)
         elif word == "=":
           print "it is ="
-          arg = stack.pop()
+          arg = self.stack.pop()
           output.write(str(arg) + "\n")
           print "ans is ", arg
         else:
           print "it is number"
           # make it double
-          stack.push(float(word))
+          self.stack.push(float(word))
 
+  # remove all by calling purge method of linked list
+  def clear(self):
+    self.stack.purge()
 
-Algorithms.calculator(open("input.txt", 'r'), open("output.txt", 'w+'))
+  # use the iterator of linked list to access every remaining element
+  def printall(self):
+    for ele in self.stack:
+      print ele
+
+a = Algorithms()
+a.calculator(open("input.txt", 'r'), open("output.txt", 'w+'))
+a.printall()
+a.clear()
+print "print all again"
+a.printall()
