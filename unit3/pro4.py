@@ -1,3 +1,10 @@
+'''
+Devise a scheme using a stack to convert an infix expression to a postfix expression. Hint: In a postfix expression operators appear after their operands whereas in an infix expression they appear between their operands. Process the symbols in the prefix expression one-by-one. Output operands immediately, but save the operators in a stack until they are needed. Pay special attention to the precedence of the operators.
+
+NOTE: only works without paranthesis
+'''
+
+
 from opus7.stackAsLinkedList import StackAsLinkedList
 
 class Algorithms(object):
