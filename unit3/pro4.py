@@ -79,9 +79,6 @@ class Algorithms(object):
 
 
 
-
-
-
 a = Algorithms()
 a.calculator(open("infix_input.txt", 'r'), open("output.txt", 'w+'))
 
