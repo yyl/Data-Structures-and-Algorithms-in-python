@@ -1,3 +1,7 @@
+'''
+Write a program to convert a postfix expression into an infix expression using a stack. One way to do this is to modify the RPN calculator program given in Program to use a stack of infix expressions. A binary operator should pop two strings from the stack and then push a string which is formed by concatenating the operator and its operands in the correct order. For example, suppose the operator is ``*'' and the two strings popped from the stack are "(b+c)" and "a". Then the result that gets pushed onto the stack is the string "a*(b+c)".
+'''
+
 from opus7.stackAsLinkedList import StackAsLinkedList
 
 class Algorithms(object):
