@@ -87,4 +87,32 @@ class DoublyLinkedList(object):
     self._head = None
     self._tail = None
 
+  def extract(self, obj):
+    tmp = self._head
+    prev = tmp
+    while tmp != None:
+      if tmp._value == obj:
+        if tmp == self._head:
+          tmp._next._prev = None
+          self._head = tmp._next
+        elif tmp == self._tail:
+          tmp._prev = None
+          prev._next = None
+          self._tail = prev
+        else:
+          prev._next = tmp._next
+          tmp._prev = None
+          tmp._next._prev = prev
+          tmp._next = None
+        return obj
+      prev = tmp
+      tmp = tmp._next
+    return None
 
+  def __copy__(self):
+    tmp = DoublyLinkedList()
+    current = self._head
+    while current != None:
+      tmp.append(current.value)
+      current = current._next
+    return tmp

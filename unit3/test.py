@@ -1,6 +1,7 @@
 import unittest
 from doublyLinkedList import DoublyLinkedList
 from opus7.exception import *
+from copy import copy
 
 class TestList(unittest.TestCase):
   def setUp(self):
@@ -40,6 +41,26 @@ class TestList(unittest.TestCase):
     self.l.purge()
     self.assertEqual(self.l.head, None)
     self.assertEqual(self.l.tail, None)
+
+  def test_extract(self):
+    self.l.append(1)
+    self.l.append(2)
+    self.l.append(3)
+    self.l.append(4)
+    self.l.append(5)
+    self.assertEqual(self.l.extract(1), 1)
+    self.assertEqual(self.l.head.value, 2)
+    self.assertEqual(self.l.extract(10), None)
+    self.assertEqual(self.l.extract(5), 5)
+    self.assertEqual(self.l.tail.value, 4)
+
+  def test_copy(self):
+    self.l.append(1)
+    self.l.append(2)
+    self.l.append(3)
+    a = copy(self.l)
+    self.assertEqual(a.head.value, 1)
+    self.assertEqual(a.tail.value, 3)
 
 
 if __name__ == "__main__":
