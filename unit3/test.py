@@ -78,5 +78,18 @@ class DequeTest(unittest.TestCase):
     self.assertEqual(self.d.head, None)
     self.assertEqual(self.d.tail, None)
 
+  def test_head(self):
+    self.d.enqueueHead(1)
+    self.assertEqual(self.d.head.value, 1)
+    self.assertEqual(self.d.tail.value, 1)
+    self.d.enqueueHead(2)
+    self.d.enqueueHead(3)
+    self.assertEqual(self.d.head.value, 3)
+    self.assertEqual(self.d.tail.value, 1)
+    self.assertEqual(self.d.dequeueHead() , 3)
+    self.assertEqual(self.d.dequeueHead() , 2)
+    self.assertEqual(self.d.dequeueHead() , 1)
+    self.assertRaises(AssertionError, self.d.dequeueHead)
+
 if __name__ == "__main__":
   unittest.main()

@@ -15,6 +15,19 @@ class Deque(Container):
   tail = property(
       fget = lambda self: self.getTail())
 
+  def enqueueHead(self, obj):
+    self._list.prepend(obj)
+
+  def dequeueHead(self):
+    assert not self._list.isEmpty
+    return self._list.extract(self._list.head.value)
+
+  def enqueueTail(self, obj):
+    pass
+
+  def dequeueTail(self):
+    pass
+
   def __iter__(self):
     pass
 
