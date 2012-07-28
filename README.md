@@ -1,4 +1,4 @@
-###My solution to###
+###Selective solution to###
 ##Data Structures and Algorithms with Object-Oriented Design Patterns in Python##
 
 It is a [web book](http://www.brpreiss.com/books/opus7/html/book.html) teaching implementation of 
@@ -7,3 +7,6 @@ I start studying it a week ago. It has projects for every chapter, but no soluti
 While I am not 100% percent my solution is correct, they could get you started at least.
 
 Welcome to fork and modify the solution, and send me pull requests to improve it.
+
+####Problems left to be completed
+- Stacks, Queues and Dequeues: 10
