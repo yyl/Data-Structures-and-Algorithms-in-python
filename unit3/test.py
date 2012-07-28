@@ -2,6 +2,7 @@ import unittest
 from doublyLinkedList import DoublyLinkedList
 from opus7.exception import *
 from copy import copy
+from pro8 import Deque
 
 class TestList(unittest.TestCase):
   def setUp(self):
@@ -69,7 +70,13 @@ class TestList(unittest.TestCase):
     self.l.extract(1)
     self.assertTrue(self.l.isEmpty)
 
+class DequeTest(unittest.TestCase):
+  def setUp(self):
+    self.d = Deque()
 
+  def test_init(self):
+    self.assertEqual(self.d.head, None)
+    self.assertEqual(self.d.tail, None)
 
 if __name__ == "__main__":
   unittest.main()
