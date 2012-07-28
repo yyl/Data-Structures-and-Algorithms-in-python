@@ -1,3 +1,7 @@
+'''
+Design and implement a class called DequeAsDoublyLinkedList that implements the Deque interface using a doubly-linked list. Select one of the approaches shown in Figure .
+'''
+
 from doublyLinkedList import DoublyLinkedList
 from opus7.container import Container
 
@@ -23,10 +27,11 @@ class Deque(Container):
     return self._list.extract(self._list.head.value)
 
   def enqueueTail(self, obj):
-    pass
+    self._list.append(obj)
 
   def dequeueTail(self):
-    pass
+    assert not self._list.isEmpty
+    return self._list.extract(self._list.tail.value)
 
   def __iter__(self):
     pass
@@ -35,4 +40,8 @@ class Deque(Container):
     pass
 
   def purge(self):
-    pass
+    self._list.purge()
+
+  #override
+  def getIsEmpty(self):
+    return self._list.isEmpty
