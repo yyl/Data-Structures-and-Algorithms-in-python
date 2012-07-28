@@ -62,6 +62,14 @@ class TestList(unittest.TestCase):
     self.assertEqual(a.head.value, 1)
     self.assertEqual(a.tail.value, 3)
 
+  def test_empty(self):
+    self.assertTrue(self.l.isEmpty)
+    self.l.append(1)
+    self.assertFalse(self.l.isEmpty)
+    self.l.extract(1)
+    self.assertTrue(self.l.isEmpty)
+
+
 
 if __name__ == "__main__":
   unittest.main()

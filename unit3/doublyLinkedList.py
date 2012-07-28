@@ -59,11 +59,17 @@ class DoublyLinkedList(object):
       raise ContainerEmpty
     return self._tail
 
+  def getIsEmpty(self):
+    return not self._head
+
   first = property(
       fget = lambda self: self.getFirst())
 
   last = property(
       fget = lambda self: self.getLast())
+
+  isEmpty = property(
+      fget = lambda self: self.getIsEmpty())
 
   def append(self, obj):
     tmp = self.Element(self._tail, obj, None, self)
@@ -92,13 +98,15 @@ class DoublyLinkedList(object):
     prev = tmp
     while tmp != None:
       if tmp._value == obj:
-        if tmp == self._head:
-          tmp._next._prev = None
-          self._head = tmp._next
+        if tmp == self._head and tmp == self._tail:
+          self.purge()
         elif tmp == self._tail:
           tmp._prev = None
           prev._next = None
           self._tail = prev
+        elif tmp == self._head:
+          tmp._next._prev = None
+          self._head = tmp._next
         else:
           prev._next = tmp._next
           tmp._prev = None
@@ -116,3 +124,4 @@ class DoublyLinkedList(object):
       tmp.append(current.value)
       current = current._next
     return tmp
+
