@@ -10,3 +10,4 @@ Welcome to fork and modify the solution, and send me pull requests to improve it
 
 ####Problems left to be completed
 - Stacks, Queues and Dequeues: 10
+- Ordered and Sorted list: 5
