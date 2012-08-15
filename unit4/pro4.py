@@ -1,3 +1,7 @@
+'''
+Devise and implement an algorithm to multiply two polynomials
+'''
+
 from opus7.polynomialAsSortedList import PolynomialAsSortedList
 
 class MultiplyPolynomial(PolynomialAsSortedList):
@@ -20,6 +24,7 @@ class MultiplyPolynomial(PolynomialAsSortedList):
       term1 = self.nextTerm(p1)
 
     return result
+
 
 # test (1+2x+x^2)*(1+x)
 m1 = MultiplyPolynomial()
