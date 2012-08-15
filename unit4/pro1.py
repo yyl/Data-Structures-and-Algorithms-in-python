@@ -8,19 +8,31 @@ Write a visitor to solve each of the following problems:
 
 from opus7.orderedListAsArray import OrderedListAsArray
 from opus7.visitor import Visitor
+from random import random
 
 def pro1():
-  order_list = OrderedListAsArray(10)
+  order_list = RandomList(10)
+  order_list.generate()
+  print order_list
   m_visitor = MinimumVisitor()
-  order_list.insert(42)
-  order_list.insert(21)
-  order_list.insert(41)
-  order_list.insert(13)
-  order_list.insert(94)
-  order_list.insert(34)
+  max_visitor = MaxVisitor()
   order_list.accept(m_visitor)
   m_visitor.current()
+  order_list.accept(max_visitor)
+  max_visitor.current()
 
+# subclass of OrderedListAsArray, has the method to randomly generate elements
+class RandomList(OrderedListAsArray):
+
+  # based on the length of array, randomly generate, <100
+  def generate(self):
+    self.purge()
+    size = len(self._array)
+    for i in range(size):
+      value = int(random() * 100)
+      self.insert(value)
+
+# visitor to find minimum element
 class MinimumVisitor(Visitor):
 
   def __init__(self):
@@ -33,5 +45,18 @@ class MinimumVisitor(Visitor):
   def current(self):
     print "current minimum value is:", self.minimum
 
+
+# visitor to find minimum element
+class MaxVisitor(Visitor):
+
+  def __init__(self):
+    self.maximum = -9999999999
+
+  def visit(self, obj):
+    if obj > self.maximum:
+      self.maximum = obj
+
+  def current(self):
+    print "current maximum value is:", self.maximum
 
 pro1()
