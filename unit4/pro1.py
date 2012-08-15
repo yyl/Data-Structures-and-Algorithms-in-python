@@ -16,10 +16,16 @@ def pro1():
   print order_list
   m_visitor = MinimumVisitor()
   max_visitor = MaxVisitor()
+  sum_visitor = SumVisitor()
+  product_visitor = ProductVisitor()
   order_list.accept(m_visitor)
-  m_visitor.current()
   order_list.accept(max_visitor)
-  max_visitor.current()
+  order_list.accept(sum_visitor)
+  order_list.accept(product_visitor)
+  print "smallest one:", m_visitor.minimum
+  print "biggest one:", max_visitor.maximum
+  print "sum of the list:", sum_visitor.sum
+  print "product of the list:", product_visitor.product
 
 # subclass of OrderedListAsArray, has the method to randomly generate elements
 class RandomList(OrderedListAsArray):
@@ -36,27 +42,61 @@ class RandomList(OrderedListAsArray):
 class MinimumVisitor(Visitor):
 
   def __init__(self):
-    self.minimum = 9999999999
+    self._minimum = 9999999999
 
   def visit(self, obj):
-    if obj < self.minimum:
-      self.minimum = obj
+    if obj < self._minimum:
+      self._minimum = obj
 
-  def current(self):
-    print "current minimum value is:", self.minimum
+  def getMin(self):
+    return self._minimum
+
+  minimum = property(
+      fget = lambda self: self.getMin())
 
 
 # visitor to find minimum element
 class MaxVisitor(Visitor):
 
   def __init__(self):
-    self.maximum = -9999999999
+    self._maximum = -9999999999
 
   def visit(self, obj):
-    if obj > self.maximum:
-      self.maximum = obj
+    if obj > self._maximum:
+      self._maximum = obj
 
-  def current(self):
-    print "current maximum value is:", self.maximum
+  def getMax(self):
+    return self._maximum
+
+  maximum = property(
+      fget = lambda self: self.getMax())
+
+class SumVisitor(Visitor):
+
+  def __init__(self):
+    self._sum = 0
+
+  def visit(self, obj):
+    self._sum += obj
+
+  def getSum(self):
+    return self._sum
+
+  sum = property(
+      fget = lambda self: self.getSum())
+
+class ProductVisitor(Visitor):
+
+  def __init__(self):
+    self._product = 1
+
+  def visit(self, obj):
+    self._product *= obj
+
+  def getProduct(self):
+    return self._product
+
+  product = property(
+      fget = lambda self: self.getProduct())
 
 pro1()
